@@ -49,6 +49,7 @@ class Student(models.Model):
     student_id = models.CharField(max_length=100, unique=True) 
     gender = models.CharField(choices=GENDER_CHOICES,default='N')
     student_class = models.CharField(choices=CLASS_CHOICES)
+    date_of_birth = models.DateField()
     religion = models.CharField(max_length=40)
     joining_date = models.DateField()
     mobile_number = models.CharField(max_length=15)
