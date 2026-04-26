@@ -8,13 +8,13 @@
                      <div class="col">
                         <h3 class="page-title">Students</h3>
                         <ul class="breadcrumb">
-                           <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                           <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                            <li class="breadcrumb-item active">Students</li>
                         </ul>
                      </div>
                      <div class="col-auto text-right float-right ml-auto">
                         <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-                        <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                        <a href="{% url 'add_student' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                      </div>
                   </div>
                </div>
@@ -41,8 +41,8 @@
                                        <td>PRE2209</td>
                                        <td>
                                           <h2 class="table-avatar">
-                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-01.jpg" alt="User Image"></a>
-                                             <a href="student-details.html">Aaliyah</a>
+                                             <a href="{% url 'view_student' student.student_id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{ student.student_images.url }}" alt="User Image"></a>
+                                             <a href="{% url 'view_student' student.student_id %}">{{student.first_name}} {{student.last_name}}</a>
                                           </h2>
                                        </td>
                                        <td>10 A</td>
@@ -52,7 +52,7 @@
                                        <td>911 Deer Ridge Drive,USA</td>
                                        <td class="text-right">
                                           <div class="actions">
-                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <a href="{% url 'edit_student' %}" class="btn btn-sm bg-success-light mr-2">
                                              <i class="fas fa-pen"></i>
                                              </a>
                                              <a href="#" class="btn btn-sm bg-danger-light">
@@ -65,8 +65,8 @@
                                        <td>PRE2213</td>
                                        <td>
                                           <h2 class="table-avatar">
-                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="User Image"></a>
-                                             <a href="student-details.html">Malynne</a>
+                                             <a href="{% url 'view_student' %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="User Image"></a>
+                                             <a href="{% url 'view_student' %}">Malynne</a>
                                           </h2>
                                        </td>
                                        <td>8 A</td>
@@ -76,7 +76,7 @@
                                        <td>Bacardi Rd P.O. Box N-4880, New Providence</td>
                                        <td class="text-right">
                                           <div class="actions">
-                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <a href="{% url 'edit_student' %}" class="btn btn-sm bg-success-light mr-2">
                                              <i class="fas fa-pen"></i>
                                              </a>
                                              <a href="#" class="btn btn-sm bg-danger-light">
@@ -100,7 +100,7 @@
                                        <td>P.O. Box: 41, Gaborone</td>
                                        <td class="text-right">
                                           <div class="actions">
-                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <a href="{% url 'edit_student' %}" class="btn btn-sm bg-success-light mr-2">
                                              <i class="fas fa-pen"></i>
                                              </a>
                                              <a href="#" class="btn btn-sm bg-danger-light">
@@ -124,7 +124,7 @@
                                        <td>4771 Oral Lake Road, Golden Valley</td>
                                        <td class="text-right">
                                           <div class="actions">
-                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <a href="{% url 'edit_student' %}" class="btn btn-sm bg-success-light mr-2">
                                              <i class="fas fa-pen"></i>
                                              </a>
                                              <a href="#" class="btn btn-sm bg-danger-light">

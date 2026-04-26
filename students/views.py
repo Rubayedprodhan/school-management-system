@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 from .models import *
+from django.shortcuts import redirect
 
 def add_student(request):
     if request.method == 'POST':
@@ -59,13 +60,19 @@ def add_student(request):
             parmanent_address = parmanent_address
         )
         messages.success(request, "Student Added Successfully")
-        return render(request,"student_list")
+        return redirect("student_list")
 
     return render(request,"student/add-student.html")
 
 
 def student_list(request):
-    return render(request,"student/students.html")
+    student_list = Student.objects.select_related('parent').all()
+    context = {
+        'student' : student_list
+
+    }
+    
+    return render(request,"student/students.html",context)
 
 def edit_student(request):
     return render(request, "student/edit-student.html")

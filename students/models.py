@@ -49,15 +49,16 @@ class Student(models.Model):
     student_id = models.CharField(max_length=100, unique=True) 
     gender = models.CharField(choices=GENDER_CHOICES,default='N')
     student_class = models.CharField(choices=CLASS_CHOICES)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(null=True, blank=True)
     religion = models.CharField(max_length=40)
     joining_date = models.DateField()
     mobile_number = models.CharField(max_length=15)
     admission_number = models.CharField(max_length=15)
     section = models.CharField(max_length=15)
     student_images=models.ImageField(upload_to='Student/', blank=True)
-    parent = models.OneToOneField(Parent,on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=255,unique=True, blank=True)
+ 
+    parent = models.OneToOneField(Parent, on_delete=models.CASCADE, null=True, blank=True)
+    slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
 
     def save(self, *args, **kwargs):
 
