@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from .models import *
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 
 def add_student(request):
     if request.method == 'POST':
@@ -68,14 +69,65 @@ def add_student(request):
 def student_list(request):
     student_list = Student.objects.select_related('parent').all()
     context = {
-        'student' : student_list
+        'student_list' : student_list
 
     }
     
     return render(request,"student/students.html",context)
 
-def edit_student(request):
+def edit_student(request, slug):
+    student = get_object_or_404(Student, slug = slug )
+    parent = student.parent if hasattr (student, "parent" ) else None
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        student_id = request.POST.get('student_id')
+        gender = request.POST.get('gender')
+        date_of_birth = request.POST.get('date_of_birth')
+        student_class = request.POST.get('student_class')
+        religion = request.POST.get('religion')
+        joining_date = request.POST.get('joining_date')
+        mobile_number = request.POST.get('mobile_number')
+        admission_number = request.POST.get('admission_number')
+        section = request.POST.get('section')
+        student_images = request.FILES.get('student_images')
+        # student save
+
+        student.father_name = request.POST.get('father_name')
+        student.father_occupation = request.POST.get('father_occupation')
+        student.father_mobile = request.POST.get('father_mobile')
+        student.father_email = request.POST.get('father_email')
+        student.mother_name = request.POST.get('mother_name')
+        student.mother_occupation = request.POST.get('mother_occupation')
+        student.mother_mobile = request.POST.get('mother_mobile')
+        student.mother_email = request.POST.get('mother_email')
+        student.present_address = request.POST.get('present_address')
+        student.parmanent_address = request.POST.get('parmanent_address')
+
+        student = Student.objects.create(
+            first_name = first_name,
+            last_name = last_name,
+            student_id = student_id,
+            gender = gender,
+            date_of_birth = date_of_birth ,
+            student_class = student_class,
+            religion = religion,
+            joining_date = joining_date,
+            mobile_number = mobile_number,
+            admission_number = admission_number,
+            section = section,
+            student_images = student_images
+            
+         )
+        
+
+
+
     return render(request, "student/edit-student.html")
 
-def view_student(request):
-    return render(request, "student/student-details.html")
+def view_student(request, slug):
+    student = get_object_or_404(Student, student_id = slug)
+    context = {
+        'student' : student
+    }
+    return render(request, "student/student-details.html", context)
