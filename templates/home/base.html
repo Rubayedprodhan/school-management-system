@@ -191,13 +191,13 @@
                   />
                 </div>
                 <div class="user-text">
-                  <h6>Ryan Taylor</h6>
+                  <h6>{{ user.username}}</h6>
                   <p class="text-muted mb-0">Administrator</p>
                 </div>
               </div>
               <a class="dropdown-item" href="profile.html">My Profile</a>
               <a class="dropdown-item" href="inbox.html">Inbox</a>
-              <a class="dropdown-item" href="login.html">Logout</a>
+              <a class="dropdown-item" href="{% url "logout" %}">Logout</a>
             </div>
           </li>
         </ul>
@@ -235,7 +235,7 @@
                   <li><a href="{% url 'student_list' %}">Student List</a></li>
                   <li><a href="#">Student View</a></li>
                   <li><a href="{% url 'add_student' %}">Student Add</a></li>
-                  <li><a href="{% url 'edit_student' %}">Student Edit</a></li>
+                  {% comment %} <li><a href="{% url 'edit_student' %}">Student Edit</a></li> {% endcomment %}
                 
                 </ul>
               </li>
@@ -330,9 +330,9 @@
                   <span> Authentication </span> <span class="menu-arrow"></span
                 ></a>
                 <ul>
-                  <li><a href="login.html">Login</a></li>
-                  <li><a href="register.html">Register</a></li>
-                  <li><a href="forgot-password.html">Forgot Password</a></li>
+                  <li><a href="{% url "login" %}">Login</a></li>
+                  <li><a href="{% url "signup" %}">Register</a></li>
+                  <li><a href="{% url "forgot_password" %}">Forgot Password</a></li>
                   <li><a href="error-404.html">Error Page</a></li>
                 </ul>
               </li>
